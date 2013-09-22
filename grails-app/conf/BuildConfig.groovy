@@ -1,6 +1,6 @@
-grails.project.class.dir		= "target/classes"
-grails.project.test.class.dir	= "target/test-classes"
-grails.project.test.reports.dir	= "target/test-reports"
+grails.project.class.dir = "target/classes"
+grails.project.test.class.dir = "target/test-classes"
+grails.project.test.reports.dir = "target/test-reports"
 
 //grails.project.fork = [
 //    // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
@@ -18,32 +18,33 @@ grails.project.test.reports.dir	= "target/test-reports"
 
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
-    // inherit Grails' default dependencies
-    inherits("global") {
-        // uncomment to disable ehcache
-        // excludes 'ehcache'
-    }
-    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
-    repositories {
-        grailsCentral()
-        mavenLocal()
-        mavenCentral()
-    }
-    dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-    }
-	plugins {
-//		runtime	(":hibernate:$grailsVersion")		{ export = false }		// needed for testing the plugin as an app
-//		build	(":tomcat:$grailsVersion")			{ export = false }		// needed for testing the plugin as an app
+  // inherit Grails' default dependencies
+  inherits("global") {
+    // uncomment to disable ehcache
+    // excludes 'ehcache'
+  }
+  log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+  repositories {
+    grailsCentral()
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+  }
+  plugins {
+//    runtime(":hibernate:3.6.10.1") { export = false }    // needed for testing the plugin as an app
+//    build(":tomcat:7.0.42") { export = false }    // needed for testing the plugin as an app
 //		build	(":rest-client-builder:1.0.3")		{ export = false }		// needed for plugin deployment
-		build	(":release:2.2.1")					{ export = false }		// needed for plugin deployment
-		
-		runtime	(":jquery:1.8.3")					{ export = true }		// needed for the Bootstrap datepicker
-//		runtime	(":jquery:1.10.2")					{ export = true }		// WARN: does not work with Bootstrap Datepicker !
-        runtime	(":resources:1.2")					{ export = true }		// needed for Bootstrap's less files
-		
-		compile	(":lesscss-resources:1.3.3")		{ export = true }		// needed for Bootstrap's less files
+    build(":release:2.2.1") { export = false }    // needed for plugin deployment
 
-		compile (":font-awesome-resources:3.2.1.2")	{ export = true }		// needed for Bootstrap's image replacement
-  	}
+//    compile(":scaffolding:2.0.0") { export = true }
+    runtime(":jquery:1.8.3") { export = true }    // needed for the Bootstrap datepicker
+//		runtime	(":jquery:1.10.2")					{ export = true }		// WARN: does not work with Bootstrap Datepicker !
+    runtime(":resources:1.2") { export = true }    // needed for Bootstrap's less files
+
+    compile(":lesscss-resources:1.3.3") { export = true }    // needed for Bootstrap's less files
+
+    compile(":font-awesome-resources:3.2.1.2") { export = true }    // needed for Bootstrap's image replacement
+  }
 }

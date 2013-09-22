@@ -1,7 +1,8 @@
 import kickstart.CustomDateEditorRegistrar
+import org.apache.tomcat.jni.File
 
 class KickstartWithBootstrapGrailsPlugin {
-    
+
     def title			= "Kickstart with Bootstrap - Good looking websites!"
     def version			= "0.9.8"																					// the plugin version
 	def license			= "APACHE"																					// License: one of 'APACHE', 'GPL2', 'GPL3'
@@ -9,13 +10,13 @@ class KickstartWithBootstrapGrailsPlugin {
 Kickstart is a plugin for Grails to start your project with a good looking frontend. \
 It provides adapted scaffolding templates for standard CRUD pages using the Bootstrap \
 frontend framework initiated by Twitter."""
-	
-    def grailsVersion	= "2.0 > * > 2.3"																			// the version or versions of Grails the plugin is designed for
+
+    def grailsVersion	= "2.0 > *"																			// the version or versions of Grails the plugin is designed for
     def dependsOn		= [:]																						// the other plugins this plugin depends on
 	def pluginExcludes	= [																							// resources that are excluded from plugin packaging
 //            "grails-app/views/error.gsp"
 	]
-	
+
 //	def organization	= [ name: "SpringSource", url: "http://www.springsource.org/" ]								// Details of company behind the plugin (if there is one)
     def author			= "Joerg Rech"
     def authorEmail		= "joerg.rech@gmail.com"
@@ -26,17 +27,17 @@ frontend framework initiated by Twitter."""
 	def scm				= [ url: "https://github.com/joergrech/KickstartWithBootstrap" ]							// Online location of the plugin's browseable source code.
 	def issueManagement	= [ url: "https://github.com/joergrech/KickstartWithBootstrap/issues", system: "GitHub" ]	// Location of the plugin's issue tracker.
 
-	
-	
+
+
     def doWithWebDescriptor = { xml ->
-        // TODO Implement additions to web.xml (optional), this event occurs before 
+        // TODO Implement additions to web.xml (optional), this event occurs before
     }
 
 	def doWithSpring = {
 		customPropertyEditorRegistrar(CustomDateEditorRegistrar) {
 			grailsApplication = ref("grailsApplication")
 		}
-	} 
+	}
 
     def doWithDynamicMethods = { ctx ->
         // TODO Implement registering dynamic methods to classes (optional)
@@ -45,9 +46,9 @@ frontend framework initiated by Twitter."""
     def doWithApplicationContext = { applicationContext ->
         // TODO Implement post initialization spring config (optional)
 
-		// Collect all *.properties files in the I18N directory and build list of "available" locales 
+		// Collect all *.properties files in the I18N directory and build list of "available" locales
 		def locales = []
-		def i18nDir 
+		def i18nDir
 
 		try {
 			if (application.isWarDeployed()) {
@@ -76,7 +77,7 @@ frontend framework initiated by Twitter."""
 				locales << "en"
 				locales << "de"
 			}
-			log.info "| Kickstart found ${locales.size()} locales usable in the language selector (excluding the default \"locale\" messages.properties)."			
+			log.info "| Kickstart found ${locales.size()} locales usable in the language selector (excluding the default \"locale\" messages.properties)."
 		} catch (Exception e) {
 			log.warn "WARNING: could not find the directory to the project's I18N files! The Language Switcher might not work correctly!"
 			log.warn e.getMessage()

@@ -32,7 +32,7 @@
 			</tr>
 		
 			<tr class="prop">
-				<td valign="top" class="name"><g:message code="_DemoPage.myDate2.label" default="My Date 2" /></td>
+				<td valign="top" class="name"><g:message code="_DemoPage.myDate2.label" default="My Date2" /></td>
 				
 				<td valign="top" class="value"><g:formatDate date="${_DemoPageInstance?.myDate2}" /></td>
 				
